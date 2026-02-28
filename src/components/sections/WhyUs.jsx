@@ -52,7 +52,7 @@ const WhyUs = () => (
         {/* Left — big stacked text */}
         <ScrollReveal>
           <div className="flex flex-col gap-2">
-            <SectionLabel className="mb-6">Why Novalith</SectionLabel>
+            <SectionLabel className="mb-6">Why FutureMind</SectionLabel>
             <h2 className="font-display font-extrabold text-5xl lg:text-7xl tracking-tighter leading-none">
               <span className="block text-text">AI-first.</span>
               <span className="block" style={{ WebkitTextStroke: '2px rgba(240,242,248,0.25)', color: 'transparent' }}>

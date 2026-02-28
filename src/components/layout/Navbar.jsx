@@ -42,7 +42,7 @@ const Navbar = () => {
             {/* Logo */}
             <Link to="/" className="flex items-center">
               <span className="font-display font-800 text-xl text-text">
-                Nova<span className="text-accent">lith</span>
+                Future<span className="text-accent">Mind</span>
               </span>
             </Link>
 

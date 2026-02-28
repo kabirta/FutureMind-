@@ -7,7 +7,7 @@ import ScrollReveal from '../ui/ScrollReveal'
 import Button from '../ui/Button'
 
 const contactDetails = [
-  { icon: Mail, label: 'Email us', value: 'hello@novalith.studio' },
+  { icon: Mail, label: 'Email us', value: 'hello@futuremind.studio' },
   { icon: Phone, label: 'Call us', value: '+1 (555) 000-0000' },
   { icon: MapPin, label: 'Location', value: 'Remote-first · Worldwide' },
   { icon: Clock, label: 'Response time', value: 'Within 24 hours' },

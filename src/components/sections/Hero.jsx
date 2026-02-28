@@ -80,7 +80,7 @@ const Hero = () => {
 
           {/* Subheading */}
           <motion.p variants={itemVariants} className="font-body text-base sm:text-lg text-muted leading-relaxed max-w-lg mb-10">
-            Novalith Studio combines AI tooling with expert engineering to ship production-ready websites, apps, and AI products at unprecedented speed — without cutting corners.
+            FutureMind Studio combines AI tooling with expert engineering to ship production-ready websites, apps, and AI products at unprecedented speed — without cutting corners.
           </motion.p>
 
           {/* Buttons */}
