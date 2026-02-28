@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
+import { IoCallOutline } from 'react-icons/io5'
 import useScrollSpy from '../../hooks/useScrollSpy'
 import Button from '../ui/Button'
 
@@ -46,6 +47,136 @@ const Navbar = () => {
               </span>
             </Link>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+             
+
             {/* Desktop Nav */}
             <div className="hidden md:flex items-center gap-8">
               {navLinks.map((link) => {
@@ -66,7 +197,11 @@ const Navbar = () => {
             </div>
 
             {/* Desktop CTA */}
-            <div className="hidden md:block">
+            <div className="hidden md:flex items-center gap-4">
+              <div className="flex items-center gap-2 text-sm text-text">
+                <IoCallOutline className="text-accent -translate-x-12 " size={18} />
+                <span className="font-body -translate-x-12">8918142443 / 8013559045</span>
+              </div>
               <Button
                 variant="primary"
                 size="sm"
@@ -107,6 +242,10 @@ const Navbar = () => {
                     {link.label}
                   </button>
                 ))}
+                <div className="flex items-center gap-2 text-sm text-text pt-1">
+                  <IoCallOutline className="text-accent" size={18} />
+                  <span className="font-body">8918142443 / 8013559045</span>
+                </div>
                 <Button
                   variant="primary"
                   size="md"
