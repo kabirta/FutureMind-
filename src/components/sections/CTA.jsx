@@ -12,18 +12,18 @@ const CTA = () => {
   }
 
   return (
-    <section className="relative py-32 lg:py-40 overflow-hidden">
+    <section className="theme-section-soft relative py-32 lg:py-40 overflow-hidden">
       {/* Background gradient */}
       <div
         className="absolute inset-0"
-        style={{ background: 'linear-gradient(to bottom, #0d1428, #060810)' }}
+        style={{ background: 'linear-gradient(to bottom, rgb(var(--color-surface)), rgb(var(--color-bg)))' }}
       />
 
       {/* Large radial glow */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
-          background: 'radial-gradient(ellipse 60% 60% at 50% 50%, rgba(232,255,71,0.06) 0%, transparent 70%)',
+          background: 'radial-gradient(ellipse 60% 60% at 50% 50%, rgb(var(--color-accent) / 0.08) 0%, transparent 70%)',
         }}
       />
 

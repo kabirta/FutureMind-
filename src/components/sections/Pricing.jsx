@@ -13,10 +13,10 @@ const PricingCard = ({ plan, index }) => {
   return (
     <ScrollReveal delay={index * 0.1}>
       <motion.div
-        className={`relative h-full rounded-2xl border p-7 lg:p-8 flex flex-col ${
+        className={`relative h-full rounded-lg border p-7 lg:p-8 flex flex-col ${
           plan.featured
-            ? 'border-accent bg-gradient-to-b from-accent/5 to-transparent'
-            : 'border-surface2 bg-surface'
+            ? 'theme-card theme-card-featured border-accent bg-gradient-to-b from-accent/5 to-transparent'
+            : 'theme-card border-surface2 bg-surface'
         }`}
         whileHover={{ y: -8 }}
         transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
@@ -42,7 +42,7 @@ const PricingCard = ({ plan, index }) => {
 
         {/* Delivery badge */}
         <div className="mb-4">
-          <span className="inline-flex items-center gap-1.5 text-xs font-body text-muted bg-surface2 border border-surface2 rounded-full px-3 py-1">
+          <span className="theme-pill inline-flex items-center gap-1.5 text-xs font-body text-muted bg-surface2 border border-surface2 rounded-lg px-3 py-1">
             <span className="w-1.5 h-1.5 rounded-full bg-green-400" />
             Delivered in {plan.delivery}
           </span>
@@ -76,7 +76,7 @@ const PricingCard = ({ plan, index }) => {
 }
 
 const Pricing = () => (
-  <section id="pricing" className="py-24 lg:py-32">
+  <section id="pricing" className="theme-section py-24 lg:py-32">
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       {/* Header */}
       <ScrollReveal>

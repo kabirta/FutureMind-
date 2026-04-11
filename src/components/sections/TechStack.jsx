@@ -5,7 +5,7 @@ import { techStack } from '../../data/stack'
 
 const Pill = ({ label, index }) => (
   <motion.span
-    className="inline-flex items-center border border-surface2 bg-surface rounded-full px-3 py-1.5 font-body text-sm text-muted hover:border-accent/40 hover:text-text hover:bg-accent/5 transition-all duration-200 cursor-default"
+    className="theme-pill inline-flex items-center border border-surface2 bg-surface rounded-lg px-3 py-1.5 font-body text-sm text-muted hover:border-accent/40 hover:text-text hover:bg-accent/5 transition-all duration-200 cursor-default"
     initial={{ opacity: 0, scale: 0.9 }}
     whileInView={{ opacity: 1, scale: 1 }}
     viewport={{ once: true }}
@@ -16,7 +16,7 @@ const Pill = ({ label, index }) => (
 )
 
 const TechStack = () => (
-  <section id="tech-stack" className="py-24 lg:py-32">
+  <section id="tech-stack" className="theme-section py-24 lg:py-32">
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       {/* Header */}
       <ScrollReveal>

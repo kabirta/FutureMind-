@@ -7,8 +7,8 @@ import ScrollReveal from '../ui/ScrollReveal'
 import Button from '../ui/Button'
 
 const contactDetails = [
-  { icon: Mail, label: 'Email us', value: 'hello@futuremind.studio' },
-  { icon: Phone, label: 'Call us', value: '+1 (555) 000-0000' },
+  { icon: Mail, label: 'Email us', value: 'contactcodefair@gmail.com' },
+  { icon: Phone, label: 'Call us', value: '+918013559045' },
   { icon: MapPin, label: 'Location', value: 'Remote-first · Worldwide' },
   { icon: Clock, label: 'Response time', value: 'Within 24 hours' },
 ]
@@ -60,7 +60,7 @@ const Contact = () => {
   }
 
   return (
-    <section id="contact" className="py-24 lg:py-32 bg-surface">
+    <section id="contact" className="theme-section-soft py-24 lg:py-32 bg-surface">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <ScrollReveal>
@@ -111,7 +111,7 @@ const Contact = () => {
 
           {/* Right — form */}
           <ScrollReveal delay={0.15}>
-            <div className="bg-bg border border-surface2 rounded-2xl p-7 lg:p-8">
+            <div className="theme-card bg-bg border border-surface2 rounded-lg p-7 lg:p-8">
               <AnimatePresence mode="wait">
                 {submitted ? (
                   <motion.div

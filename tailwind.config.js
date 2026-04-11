@@ -7,13 +7,13 @@ export default {
   theme: {
     extend: {
       colors: {
-        bg: '#060810',
-        surface: '#0d1120',
-        surface2: '#141829',
-        accent: '#e8ff47',
-        accent2: '#47b8ff',
-        muted: '#7880a0',
-        text: '#f0f2f8',
+        bg: 'rgb(var(--color-bg) / <alpha-value>)',
+        surface: 'rgb(var(--color-surface) / <alpha-value>)',
+        surface2: 'rgb(var(--color-surface2) / <alpha-value>)',
+        accent: 'rgb(var(--color-accent) / <alpha-value>)',
+        accent2: 'rgb(var(--color-accent2) / <alpha-value>)',
+        muted: 'rgb(var(--color-muted) / <alpha-value>)',
+        text: 'rgb(var(--color-text) / <alpha-value>)',
       },
       fontFamily: {
         display: ['Syne', 'sans-serif'],

@@ -1,10 +1,10 @@
 import { motion } from 'framer-motion'
 
 const Button = ({ children, variant = 'primary', size = 'md', className = '', onClick, href, ...props }) => {
-  const base = 'inline-flex items-center justify-center gap-2 font-body font-medium rounded-full transition-all duration-200 cursor-pointer'
+  const base = 'inline-flex items-center justify-center gap-2 font-body font-medium rounded-lg transition-all duration-200 cursor-pointer'
 
   const variants = {
-    primary: 'bg-accent text-bg hover:bg-accent/90 hover:shadow-[0_0_24px_rgba(232,255,71,0.4)]',
+    primary: 'bg-accent text-bg hover:bg-accent/90 hover:shadow-[0_0_24px_rgb(var(--color-accent)_/_0.35)]',
     ghost: 'bg-transparent border border-surface2 text-text hover:border-muted hover:bg-surface',
     outline: 'bg-transparent border border-accent/40 text-accent hover:border-accent hover:bg-accent/5',
   }

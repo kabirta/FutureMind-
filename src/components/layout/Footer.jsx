@@ -41,7 +41,7 @@ const Footer = () => {
           <div className="lg:col-span-1">
             <Link to="/" className="inline-block mb-4">
               <span className="font-display font-800 text-2xl text-text">
-                Future<span className="text-accent">Mind</span>
+                Code<span className="text-accent">Fair</span>
               </span>
             </Link>
             <p className="font-body text-sm text-muted leading-relaxed max-w-xs">
@@ -108,7 +108,7 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="border-t border-surface2 mt-12 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="font-body text-sm text-muted">
-            © {new Date().getFullYear()} FutureMind Studio. All rights reserved.
+            © {new Date().getFullYear()} CodeFair Studio. All rights reserved.
           </p>
           <p className="font-body text-sm text-muted">
             Built with AI. Shipped with care.

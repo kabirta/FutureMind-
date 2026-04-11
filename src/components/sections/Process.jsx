@@ -8,8 +8,8 @@ const StepCard = ({ step, index }) => (
     <div className="flex flex-col gap-4 relative group">
       {/* Number circle */}
       <motion.div
-        className="w-12 h-12 rounded-full border border-surface2 bg-surface flex items-center justify-center z-10 relative transition-colors duration-300 group-hover:border-accent"
-        whileHover={{ borderColor: '#e8ff47' }}
+        className="theme-chip w-12 h-12 rounded-lg border border-surface2 bg-surface flex items-center justify-center z-10 relative transition-colors duration-300 group-hover:border-accent"
+        whileHover={{ borderColor: 'rgb(var(--color-accent))' }}
       >
         <span className="font-display font-bold text-sm text-muted group-hover:text-accent transition-colors">
           {step.number}
@@ -29,7 +29,7 @@ const StepCard = ({ step, index }) => (
 )
 
 const Process = () => (
-  <section id="process" className="py-24 lg:py-32 bg-surface">
+  <section id="process" className="theme-section-soft py-24 lg:py-32 bg-surface">
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       {/* Header */}
       <ScrollReveal>

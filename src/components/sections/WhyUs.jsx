@@ -32,8 +32,8 @@ const BenefitCard = ({ benefit, index }) => {
   return (
     <ScrollReveal delay={index * 0.1}>
       <motion.div
-        className="group border border-surface2 bg-bg rounded-xl p-6 hover:border-accent/30 transition-colors duration-300"
-        whileHover={{ borderColor: 'rgba(232, 255, 71, 0.3)' }}
+        className="theme-card group border border-surface2 bg-bg rounded-lg p-6 hover:border-accent/30 transition-colors duration-300"
+        whileHover={{ borderColor: 'rgb(var(--color-accent) / 0.3)' }}
       >
         <div className="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center mb-4 group-hover:bg-accent/15 transition-colors">
           <Icon size={18} className="text-accent" />
@@ -46,16 +46,16 @@ const BenefitCard = ({ benefit, index }) => {
 }
 
 const WhyUs = () => (
-  <section id="why-us" className="py-24 lg:py-32 bg-surface">
+  <section id="why-us" className="theme-section-soft py-24 lg:py-32 bg-surface">
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
         {/* Left — big stacked text */}
         <ScrollReveal>
           <div className="flex flex-col gap-2">
-            <SectionLabel className="mb-6">Why FutureMind</SectionLabel>
+            <SectionLabel className="mb-6">Why CodeFair</SectionLabel>
             <h2 className="font-display font-extrabold text-5xl lg:text-7xl tracking-tighter leading-none">
               <span className="block text-text">AI-first.</span>
-              <span className="block" style={{ WebkitTextStroke: '2px rgba(240,242,248,0.25)', color: 'transparent' }}>
+              <span className="block" style={{ WebkitTextStroke: '2px rgb(var(--color-text) / 0.25)', color: 'transparent' }}>
                 No fluff.
               </span>
               <span className="block text-accent">Fast ship.</span>

@@ -8,10 +8,10 @@ const ServiceCard = ({ service, featured = false }) => {
 
   return (
     <motion.div
-      className={`relative rounded-2xl border border-surface2 p-6 lg:p-8 cursor-default group ${
-        featured ? 'bg-surface2' : 'bg-surface'
+      className={`relative rounded-lg border border-surface2 p-6 lg:p-8 cursor-default group ${
+        featured ? 'theme-card theme-card-featured bg-surface2' : 'theme-card bg-surface'
       }`}
-      whileHover={{ backgroundColor: 'rgba(20, 24, 41, 0.9)' }}
+      whileHover={{ backgroundColor: 'rgb(var(--color-surface2) / 0.9)' }}
       transition={{ duration: 0.2 }}
     >
       {/* Tag badge */}
@@ -35,7 +35,7 @@ const ServiceCard = ({ service, featured = false }) => {
       </p>
 
       {/* Hover line */}
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-accent/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-b-2xl" />
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-accent/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-b-lg" />
     </motion.div>
   )
 }
@@ -45,7 +45,7 @@ const Services = () => {
   const rest = services.filter((s) => !s.featured)
 
   return (
-    <section id="services" className="py-24 lg:py-32">
+    <section id="services" className="theme-section py-24 lg:py-32">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <ScrollReveal>
