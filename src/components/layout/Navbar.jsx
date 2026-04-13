@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, Moon, Sun, X } from 'lucide-react'
 import { IoCallOutline } from 'react-icons/io5'
@@ -7,10 +7,13 @@ import useScrollSpy from '../../hooks/useScrollSpy'
 import Button from '../ui/Button'
 
 const navLinks = [
-  { label: 'Services', href: '#services' },
-  { label: 'Process', href: '#process' },
-  { label: 'Pricing', href: '#pricing' },
-  { label: 'Tech Stack', href: '#tech-stack' },
+  { label: 'Home', href: '/' },
+  { label: 'Services', href: '#services', sectionId: 'services' },
+  { label: 'Portfolio', href: '/case-studies' },
+  { label: 'Our Team', href: '/our-team' },
+  { label: 'Lab', href: '#tech-stack', sectionId: 'tech-stack' },
+  { label: 'Blog', href: '/blog' },
+  { label: 'Contact', href: '#contact', sectionId: 'contact' },
 ]
 
 const getInitialTheme = () => {
@@ -51,6 +54,9 @@ const Navbar = () => {
   const [scrolled, setScrolled] = useState(false)
   const [theme, setTheme] = useState(getInitialTheme)
   const activeSection = useScrollSpy(['services', 'process', 'pricing', 'tech-stack', 'contact'])
+  const location = useLocation()
+  const navigate = useNavigate()
+  const isTeamPage = location.pathname === '/our-team'
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20)
@@ -68,11 +74,25 @@ const Navbar = () => {
     }
   }, [theme])
 
-  const handleNavClick = (href) => {
+  const handleNavClick = (link) => {
     setIsOpen(false)
-    const id = href.replace('#', '')
-    const el = document.getElementById(id)
-    if (el) el.scrollIntoView({ behavior: 'smooth' })
+
+    if (!link.href.startsWith('#')) {
+      navigate(link.href)
+      return
+    }
+
+    const id = link.href.replace('#', '')
+
+    if (location.pathname !== '/') {
+      navigate('/')
+      window.setTimeout(() => {
+        document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
+      }, 80)
+      return
+    }
+
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
   }
 
   const toggleTheme = () => {
@@ -85,7 +105,9 @@ const Navbar = () => {
         scrolled ? 'shadow-[var(--shadow-nav)]' : ''
       }`}
     >
-      <nav className="site-nav bg-bg/80 backdrop-blur-xl border-b border-surface">
+      <nav className={`site-nav backdrop-blur-xl border-b ${
+        isTeamPage ? 'team-nav border-surface2 bg-surface' : 'border-surface bg-bg/80'
+      }`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
@@ -226,16 +248,22 @@ const Navbar = () => {
              
 
             {/* Desktop Nav */}
-            <div className="hidden md:flex items-center gap-8">
+            <div className={`hidden md:flex items-center gap-7 ${
+              isTeamPage ? 'absolute left-1/2 -translate-x-1/2' : ''
+            }`}>
               {navLinks.map((link) => {
-                const sectionId = link.href.replace('#', '')
-                const isActive = activeSection === sectionId
+                const isActive = link.sectionId
+                  ? location.pathname === '/' && activeSection === link.sectionId
+                  : link.href === '/'
+                    ? location.pathname === '/' && !activeSection
+                    : location.pathname === link.href
+
                 return (
                   <button
                     key={link.label}
-                    onClick={() => handleNavClick(link.href)}
+                    onClick={() => handleNavClick(link)}
                     className={`font-body text-sm transition-colors duration-200 cursor-pointer bg-transparent border-none ${
-                      isActive ? 'text-accent' : 'text-muted hover:text-text'
+                      isActive ? 'text-accent' : isTeamPage ? 'text-text/75 hover:text-accent' : 'text-muted hover:text-text'
                     }`}
                   >
                     {link.label}
@@ -245,20 +273,24 @@ const Navbar = () => {
             </div>
 
             {/* Desktop CTA */}
-            <div className="hidden md:flex items-center gap-4">
-              <div className="flex items-center gap-2 text-sm text-text">
-                <IoCallOutline className="text-accent -translate-x-12 " size={18} />
-                <span className="font-body -translate-x-12">+918013559045</span>
+            {isTeamPage ? (
+              <div className="hidden md:block w-32" />
+            ) : (
+              <div className="hidden md:flex items-center gap-4">
+                <div className="flex items-center gap-2 text-sm text-text">
+                  <IoCallOutline className="text-accent -translate-x-12 " size={18} />
+                  <span className="font-body -translate-x-12">+918013559045</span>
+                </div>
+                <ThemeToggle theme={theme} onToggle={toggleTheme} />
+                <Button
+                  variant="primary"
+                  size="sm"
+                  onClick={() => handleNavClick({ href: '#contact', sectionId: 'contact' })}
+                >
+                  Start a Project
+                </Button>
               </div>
-              <ThemeToggle theme={theme} onToggle={toggleTheme} />
-              <Button
-                variant="primary"
-                size="sm"
-                onClick={() => handleNavClick('#contact')}
-              >
-                Start a Project
-              </Button>
-            </div>
+            )}
 
             {/* Mobile Hamburger */}
             <div className="flex items-center gap-2 md:hidden">
@@ -288,7 +320,7 @@ const Navbar = () => {
                 {navLinks.map((link) => (
                   <button
                     key={link.label}
-                    onClick={() => handleNavClick(link.href)}
+                    onClick={() => handleNavClick(link)}
                     className="text-left font-body text-base text-muted hover:text-text transition-colors cursor-pointer bg-transparent border-none py-1"
                   >
                     {link.label}
@@ -301,7 +333,7 @@ const Navbar = () => {
                 <Button
                   variant="primary"
                   size="md"
-                  onClick={() => handleNavClick('#contact')}
+                  onClick={() => handleNavClick({ href: '#contact', sectionId: 'contact' })}
                   className="mt-2 w-full"
                 >
                   Start a Project

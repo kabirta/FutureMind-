@@ -107,6 +107,63 @@
     box-shadow: 0 1px 0 rgb(255 255 255 / 0.9) inset;
   }
 
+  .team-nav {
+    --color-surface: 255 255 255;
+    --color-surface2: 220 232 237;
+    --color-accent: 0 122 105;
+    --color-muted: 78 90 106;
+    --color-text: 18 26 36;
+    background: rgb(255 255 255 / 0.94);
+    border-color: rgb(220 232 237 / 0.95);
+    box-shadow: 0 1px 0 rgb(255 255 255 / 0.85) inset;
+  }
+
+  .team-page {
+    background:
+      radial-gradient(circle at 16% 8%, rgb(0 122 105 / 0.12), transparent 28rem),
+      radial-gradient(circle at 84% 12%, rgb(0 122 105 / 0.07), transparent 30rem),
+      linear-gradient(180deg, #f7fafa 0%, #ffffff 48%, #f1f8f7 100%);
+    color: #121a24;
+  }
+
+  .team-line {
+    border-color: #dce8ed;
+  }
+
+  .team-kicker {
+    color: #007a69;
+    letter-spacing: 0.22em;
+  }
+
+  .team-muted {
+    color: #4e5a6a;
+  }
+
+  .team-ink {
+    color: #121a24;
+  }
+
+  .team-photo-frame {
+    background: #063d36;
+    box-shadow: 0 26px 70px rgb(0 122 105 / 0.16);
+  }
+
+  .team-social-bubble {
+    color: #121a24;
+    box-shadow: 0 12px 30px rgb(0 122 105 / 0.13);
+    border: 1px solid #dce8ed;
+  }
+
+  .team-action {
+    border-color: #c7dce1;
+    color: #121a24;
+  }
+
+  .team-action:hover {
+    border-color: #007a69;
+    color: #007a69;
+  }
+
   :root[data-theme='light'] .theme-hero {
     background:
       linear-gradient(135deg, rgb(255 255 255 / 0.84) 0%, rgb(247 250 250 / 0.84) 48%, rgb(var(--color-accent) / 0.09) 100%);

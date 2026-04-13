@@ -7,6 +7,7 @@ const Home = lazy(() => import('./pages/Home'))
 const About = lazy(() => import('./pages/About'))
 const CaseStudies = lazy(() => import('./pages/CaseStudies'))
 const Blog = lazy(() => import('./pages/Blog'))
+const OurTeam = lazy(() => import('./pages/OurTeam'))
 
 const PageLoader = () => (
   <div className="min-h-screen flex items-center justify-center">
@@ -23,6 +24,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/case-studies" element={<CaseStudies />} />
+          <Route path="/our-team" element={<OurTeam />} />
           <Route path="/blog" element={<Blog />} />
         </Routes>
       </Suspense>
