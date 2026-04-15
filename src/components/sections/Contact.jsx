@@ -7,7 +7,7 @@ import ScrollReveal from '../ui/ScrollReveal'
 import Button from '../ui/Button'
 
 const contactDetails = [
-  { icon: Mail, label: 'Email us', value: 'contactcodefair@gmail.com' },
+  { icon: Mail, label: 'Email us', value: 'infocodefair@gmail.com' },
   { icon: Phone, label: 'Call us', value: '+918013559045' },
   { icon: MapPin, label: 'Location', value: 'Remote-first · Worldwide' },
   { icon: Clock, label: 'Response time', value: 'Within 24 hours' },
@@ -15,6 +15,8 @@ const contactDetails = [
 
 const serviceOptions = [
   'AI-Powered Business Website',
+  'WordPress Website',
+  'Shopify Website',
   'Mobile App (iOS & Android)',
   'Web App / SaaS MVP',
   'UI/UX Design',

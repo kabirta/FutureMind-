@@ -1,4 +1,5 @@
 import { Globe, Smartphone, LayoutDashboard, Palette, Bot, Search } from 'lucide-react'
+import { FaShopify, FaWordpress } from 'react-icons/fa6'
 
 export const services = [
   {
@@ -46,6 +47,22 @@ export const services = [
     icon: Search,
     title: 'SEO & Content Strategy',
     desc: 'AI-powered content creation, technical SEO audits, and growth strategies that drive organic traffic at scale.',
+    tag: null,
+    featured: false,
+  },
+  {
+    id: 7,
+    icon: FaWordpress,
+    title: 'WordPress Websites',
+    desc: 'Fast WordPress sites with custom themes, performance tuning, SEO foundations, and easy content editing for your team.',
+    tag: null,
+    featured: false,
+  },
+  {
+    id: 8,
+    icon: FaShopify,
+    title: 'Shopify Websites',
+    desc: 'Conversion-ready Shopify storefronts with custom sections, app setup, product flows, and checkout-ready polish.',
     tag: null,
     featured: false,
   },

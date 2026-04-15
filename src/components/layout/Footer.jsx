@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom'
 const footerLinks = {
   Services: [
     { label: 'AI Websites', href: '#services' },
+    { label: 'WordPress Websites', href: '#services' },
+    { label: 'Shopify Websites', href: '#services' },
     { label: 'Mobile Apps', href: '#services' },
     { label: 'Web Apps & SaaS', href: '#services' },
     { label: 'AI Chatbots', href: '#services' },
