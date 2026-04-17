@@ -1,17 +1,7 @@
-import { motion } from 'framer-motion'
-import { ArrowRight, ChevronDown } from 'lucide-react'
+import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion'
+import { ArrowRight } from 'lucide-react'
 import Button from '../ui/Button'
 import AnimatedCounter from '../ui/AnimatedCounter'
-
-const containerVariants = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.12 } },
-}
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 28 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } },
-}
 
 const stats = [
   { value: 5, suffix: '×', label: 'Faster delivery' },
@@ -20,105 +10,141 @@ const stats = [
   { value: 100, suffix: '%', label: 'Client satisfaction' },
 ]
 
+const fadeUp = {
+  hidden: { opacity: 0, y: 26 },
+  visible: { opacity: 1, y: 0 },
+}
+
 const Hero = () => {
+  const pointerX = useMotionValue(0)
+  const pointerY = useMotionValue(0)
+  const springX = useSpring(pointerX, { stiffness: 90, damping: 22 })
+  const springY = useSpring(pointerY, { stiffness: 90, damping: 22 })
+  const rotateY = useTransform(springX, [-0.5, 0.5], [-8, 8])
+  const rotateX = useTransform(springY, [-0.5, 0.5], [8, -8])
+
   const scrollToContact = () => {
     document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
   }
+
   const scrollToPricing = () => {
     document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' })
   }
 
+  const handleMouseMove = (event) => {
+    const rect = event.currentTarget.getBoundingClientRect()
+    pointerX.set((event.clientX - rect.left) / rect.width - 0.5)
+    pointerY.set((event.clientY - rect.top) / rect.height - 0.5)
+  }
+
+  const resetPointer = () => {
+    pointerX.set(0)
+    pointerY.set(0)
+  }
+
   return (
-    <section className="theme-hero relative min-h-[86vh] flex flex-col justify-center pb-10 pt-24 overflow-hidden">
-      {/* Background grid */}
-      <div className="absolute inset-0 grid-bg opacity-60" />
+    <section
+      id="home"
+      className="relative min-h-screen overflow-hidden pt-32 sm:pt-36 lg:pt-40"
+      onMouseMove={handleMouseMove}
+      onMouseLeave={resetPointer}
+    >
+      <div className="absolute inset-0 cyber-grid opacity-70" aria-hidden="true" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_25%,rgb(48_164_255_/_0.22),transparent_26rem),radial-gradient(circle_at_78%_25%,rgb(139_92_246_/_0.18),transparent_24rem)]" aria-hidden="true" />
 
-      {/* Glow blobs */}
-      <div
-        className="absolute top-1/4 right-0 w-[600px] h-[600px] rounded-full opacity-[0.06] pointer-events-none"
-        style={{ background: 'radial-gradient(circle, rgb(var(--color-accent2)) 0%, transparent 70%)' }}
-      />
-      <div
-        className="absolute bottom-0 left-1/4 w-[500px] h-[500px] rounded-full opacity-[0.08] pointer-events-none"
-        style={{ background: 'radial-gradient(circle, rgb(var(--color-accent)) 0%, transparent 70%)' }}
-      />
-
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+      <div className="section-inner grid min-h-[calc(100vh-9rem)] items-center gap-12 pb-16 lg:grid-cols-[1.02fr_0.98fr] lg:gap-8 lg:pb-24">
         <motion.div
-          variants={containerVariants}
+          className="relative z-10"
+          variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.11 } } }}
           initial="hidden"
           animate="visible"
-          className="max-w-4xl"
         >
-          {/* Badge */}
-          <motion.div variants={itemVariants} className="flex items-center gap-2 mb-8">
-            <div className="theme-chip flex items-center gap-2 border border-surface2 bg-surface rounded-lg px-4 py-2">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-green-400" />
-              </span>
-              <span className="font-body text-xs text-muted tracking-wide">
-                AI-Powered Agency · Small Team, Big Output
-              </span>
-            </div>
+          <motion.div
+            variants={fadeUp}
+            transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+            className="section-label mb-6"
+          >
+            AI-Powered Agency · Small Team, Big Output
           </motion.div>
 
-          {/* Headline */}
-          <motion.div variants={itemVariants} className="mb-5">
-            <h1 className="font-display font-extrabold tracking-tighter leading-[0.95]">
-              <span className="block text-[clamp(2.8rem,6.4vw,5.4rem)] text-text">
-                We build
-              </span>
-              <span className="block text-[clamp(2.8rem,6.4vw,5.4rem)] text-outline text-text/20" style={{ WebkitTextStroke: '2px rgb(var(--color-text) / 0.25)' }}>
-                digital
-              </span>
-              <span className="block text-[clamp(2.8rem,6.4vw,5.4rem)] text-accent">
-                5× faster.
-              </span>
-            </h1>
-          </motion.div>
+          <motion.h1
+            variants={fadeUp}
+            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            className="max-w-4xl font-display text-5xl font-extrabold leading-[1.02] text-white sm:text-6xl lg:text-7xl xl:text-8xl"
+          >
+            <span className="block">We build</span>
+            <span className="block text-white/90">digital</span>
+            <span className="block text-gradient">5× faster.</span>
+          </motion.h1>
 
-          {/* Subheading */}
-          <motion.p variants={itemVariants} className="font-body text-base sm:text-lg text-muted leading-relaxed max-w-lg mb-8">
+          <motion.p
+            variants={fadeUp}
+            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            className="mt-6 max-w-2xl font-body text-base leading-8 text-slate-300 sm:text-lg"
+          >
             CodeFair Studio combines AI tooling with expert engineering to ship production-ready websites, apps, and AI products at unprecedented speed — without cutting corners.
           </motion.p>
 
-          {/* Buttons */}
-          <motion.div variants={itemVariants} className="flex flex-wrap gap-4 mb-8">
-            <Button variant="primary" size="lg" onClick={scrollToPricing}>
+          <motion.div
+            variants={fadeUp}
+            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            className="mt-8 flex flex-col gap-3 sm:flex-row"
+          >
+            <Button size="lg" onClick={scrollToPricing}>
               View Packages
             </Button>
-            <Button variant="ghost" size="lg" onClick={scrollToContact}>
-              Talk to us <ArrowRight size={16} />
+            <Button variant="secondary" size="lg" onClick={scrollToContact}>
+              Talk to us <ArrowRight size={18} />
             </Button>
           </motion.div>
 
-          {/* Stats */}
           <motion.div
-            variants={itemVariants}
-            className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-6 border-t border-surface2"
+            variants={fadeUp}
+            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            className="mt-10 grid grid-cols-2 gap-3 border-t border-cyan-300/12 pt-6 sm:grid-cols-4"
           >
             {stats.map((stat) => (
-              <div key={stat.label} className="flex flex-col gap-1">
-                <span className="font-display font-extrabold text-3xl sm:text-4xl text-text tracking-tight">
+              <div key={stat.label} className="glass-card rounded-lg px-4 py-4">
+                <p className="font-display text-3xl font-extrabold text-white">
                   <AnimatedCounter end={stat.value} suffix={stat.suffix} duration={1800} />
-                </span>
-                <span className="font-body text-xs text-muted">{stat.label}</span>
+                </p>
+                <p className="mt-1 font-body text-xs text-slate-400">{stat.label}</p>
               </div>
             ))}
           </motion.div>
         </motion.div>
-      </div>
 
-      {/* Scroll indicator */}
-      <motion.div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-muted"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1, y: [0, 6, 0] }}
-        transition={{ delay: 1.5, duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-      >
-        <ChevronDown size={20} />
-      </motion.div>
+        <motion.div
+          className="relative z-10 mx-auto h-[360px] w-full max-w-[520px] sm:h-[460px] lg:h-[560px]"
+          style={{ rotateX, rotateY, transformPerspective: 900 }}
+          initial={{ opacity: 0, scale: 0.92, y: 24 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.18, ease: [0.22, 1, 0.36, 1] }}
+          aria-hidden="true"
+        >
+          <div className="absolute inset-8 rounded-lg border border-cyan-300/10 bg-cyan-300/[0.02] blur-sm" />
+          <div className="absolute left-1/2 top-1/2 h-[270px] w-[270px] -translate-x-1/2 -translate-y-1/2 sm:h-[360px] sm:w-[360px]">
+            <span className="hero-ring" />
+            <span className="hero-ring" />
+            {Array.from({ length: 18 }).map((_, index) => (
+              <span
+                key={index}
+                className="absolute left-1/2 top-1/2 h-1.5 w-1.5 rounded-full bg-cyan-200 shadow-[0_0_16px_rgb(103_232_249_/_0.9)]"
+                style={{
+                  transform: `rotate(${index * 20}deg) translateX(${index % 2 === 0 ? 152 : 126}px)`,
+                }}
+              />
+            ))}
+            <motion.div
+              className="h-full w-full p-12"
+              animate={{ y: [0, -14, 0], rotate: [0, 3, 0] }}
+              transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
+            >
+              <div className="h-full w-full hologram-sphere" />
+            </motion.div>
+          </div>
+        </motion.div>
+      </div>
     </section>
   )
 }

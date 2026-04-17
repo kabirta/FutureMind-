@@ -2,7 +2,7 @@ export const plans = [
   {
     id: 'starter',
     name: 'Starter',
-    
+    price: '',
     delivery: '5–7 days',
     description: 'Perfect for founders who need a solid web presence fast.',
     featured: false,
@@ -18,7 +18,7 @@ export const plans = [
   {
     id: 'growth',
     name: 'Growth',
-   
+    price: '',
     delivery: '10–14 days',
     description: 'The full-stack solution for growing businesses ready to scale.',
     featured: true,
@@ -35,7 +35,7 @@ export const plans = [
   {
     id: 'pro',
     name: 'Pro',
-    
+    price: '',
     delivery: 'Tailored timeline',
     description: 'Enterprise-grade builds and ongoing partnership for ambitious products.',
     featured: false,

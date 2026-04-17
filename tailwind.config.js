@@ -16,8 +16,8 @@ export default {
         text: 'rgb(var(--color-text) / <alpha-value>)',
       },
       fontFamily: {
-        display: ['Syne', 'sans-serif'],
-        body: ['DM Sans', 'sans-serif'],
+        display: ['Sora', 'sans-serif'],
+        body: ['Inter', 'sans-serif'],
       },
       animation: {
         marquee: 'marquee 30s linear infinite',

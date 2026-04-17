@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { Zap, DollarSign, Code2, RefreshCw } from 'lucide-react'
+import { Code2, DollarSign, RefreshCw, Zap } from 'lucide-react'
 import SectionLabel from '../ui/SectionLabel'
 import ScrollReveal from '../ui/ScrollReveal'
 
@@ -31,47 +31,43 @@ const BenefitCard = ({ benefit, index }) => {
 
   return (
     <ScrollReveal delay={index * 0.1}>
-      <motion.div
-        className="theme-card group border border-surface2 bg-bg rounded-lg p-6 hover:border-accent/30 transition-colors duration-300"
-        whileHover={{ borderColor: 'rgb(var(--color-accent) / 0.3)' }}
+      <motion.article
+        className="group h-full rounded-lg border border-cyan-300/12 bg-white/[0.035] p-6 backdrop-blur-xl transition-colors duration-300 hover:border-cyan-300/40"
+        whileHover={{ y: -7 }}
+        transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
       >
-        <div className="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center mb-4 group-hover:bg-accent/15 transition-colors">
-          <Icon size={18} className="text-accent" />
+        <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-lg border border-cyan-300/18 bg-cyan-300/10 text-cyan-100">
+          <Icon size={18} />
         </div>
-        <h3 className="font-display font-bold text-base text-text mb-2">{benefit.title}</h3>
-        <p className="font-body text-sm text-muted leading-relaxed">{benefit.desc}</p>
-      </motion.div>
+        <h3 className="font-display text-base font-bold text-white">{benefit.title}</h3>
+        <p className="mt-3 font-body text-sm leading-7 text-slate-400">{benefit.desc}</p>
+      </motion.article>
     </ScrollReveal>
   )
 }
 
 const WhyUs = () => (
-  <section id="why-us" className="theme-section-soft py-24 lg:py-32 bg-surface">
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-        {/* Left — big stacked text */}
-        <ScrollReveal>
-          <div className="flex flex-col gap-2">
-            <SectionLabel className="mb-6">Why CodeFair</SectionLabel>
-            <h2 className="font-display font-extrabold text-5xl lg:text-7xl tracking-tighter leading-none">
-              <span className="block text-text">AI-first.</span>
-              <span className="block" style={{ WebkitTextStroke: '2px rgb(var(--color-text) / 0.25)', color: 'transparent' }}>
-                No fluff.
-              </span>
-              <span className="block text-accent">Fast ship.</span>
-            </h2>
-            <p className="font-body text-base text-muted leading-relaxed mt-6 max-w-sm">
-              We're not a big agency with layers of account managers and bloated processes. We're a lean, AI-native team that builds faster and smarter.
-            </p>
-          </div>
-        </ScrollReveal>
-
-        {/* Right — benefit cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          {benefits.map((benefit, index) => (
-            <BenefitCard key={benefit.title} benefit={benefit} index={index} />
-          ))}
+  <section id="why-us" className="section-shell bg-[#030712]">
+    <div className="absolute inset-0 cyber-grid opacity-40" aria-hidden="true" />
+    <div className="section-inner grid grid-cols-1 items-center gap-16 lg:grid-cols-2">
+      <ScrollReveal>
+        <div>
+          <SectionLabel>Why CodeFair</SectionLabel>
+          <h2 className="mt-6 font-display text-5xl font-extrabold leading-none text-white lg:text-7xl">
+            <span className="block">AI-first.</span>
+            <span className="block text-white/35">No fluff.</span>
+            <span className="block text-gradient">Fast ship.</span>
+          </h2>
+          <p className="mt-6 max-w-sm font-body text-base leading-8 text-slate-400">
+            We're not a big agency with layers of account managers and bloated processes. We're a lean, AI-native team that builds faster and smarter.
+          </p>
         </div>
+      </ScrollReveal>
+
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+        {benefits.map((benefit, index) => (
+          <BenefitCard key={benefit.title} benefit={benefit} index={index} />
+        ))}
       </div>
     </div>
   </section>

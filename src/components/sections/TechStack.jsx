@@ -5,7 +5,7 @@ import { techStack } from '../../data/stack'
 
 const Pill = ({ label, index }) => (
   <motion.span
-    className="theme-pill inline-flex items-center border border-surface2 bg-surface rounded-lg px-3 py-1.5 font-body text-sm text-muted hover:border-accent/40 hover:text-text hover:bg-accent/5 transition-all duration-200 cursor-default"
+    className="inline-flex items-center rounded-lg border border-cyan-300/12 bg-white/[0.035] px-3 py-1.5 font-body text-sm text-slate-300 transition-all duration-200 hover:border-cyan-300/40 hover:bg-cyan-300/10 hover:text-white"
     initial={{ opacity: 0, scale: 0.9 }}
     whileInView={{ opacity: 1, scale: 1 }}
     viewport={{ once: true }}
@@ -16,32 +16,29 @@ const Pill = ({ label, index }) => (
 )
 
 const TechStack = () => (
-  <section id="tech-stack" className="theme-section py-24 lg:py-32">
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      {/* Header */}
+  <section id="tech-stack" className="section-shell bg-[#050b1a]">
+    <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_12%,rgb(48_164_255_/_0.13),transparent_26rem)]" aria-hidden="true" />
+    <div className="section-inner">
       <ScrollReveal>
-        <div className="flex flex-col gap-4 mb-14">
+        <div className="mb-14 max-w-3xl">
           <SectionLabel>Our tools</SectionLabel>
-          <h2 className="font-display font-extrabold text-4xl lg:text-5xl text-text tracking-tight max-w-xl">
+          <h2 className="mt-5 font-display text-4xl font-extrabold leading-tight text-white sm:text-5xl lg:text-6xl">
             The stack behind the speed
           </h2>
-          <p className="font-body text-base text-muted max-w-md leading-relaxed">
+          <p className="mt-5 max-w-2xl font-body text-base leading-8 text-slate-400">
             We use best-in-class tools — carefully chosen for performance, developer experience, and scalability.
           </p>
         </div>
       </ScrollReveal>
 
-      {/* Stack rows */}
-      <div className="flex flex-col divide-y divide-surface2">
+      <div className="flex flex-col divide-y divide-cyan-300/10 rounded-lg border border-cyan-300/10 bg-white/[0.025] p-2 backdrop-blur-xl">
         {techStack.map((row, rowIndex) => (
           <ScrollReveal key={row.category} delay={rowIndex * 0.07}>
-            <div className="flex flex-col sm:flex-row sm:items-center gap-4 py-5">
-              {/* Category label */}
-              <div className="sm:w-36 lg:w-44 flex-shrink-0">
-                <span className="font-body text-xs text-muted tracking-wide uppercase">{row.category}</span>
+            <div className="flex flex-col gap-4 px-3 py-5 sm:flex-row sm:items-center">
+              <div className="flex-shrink-0 sm:w-36 lg:w-44">
+                <span className="font-body text-xs font-semibold uppercase text-cyan-200">{row.category}</span>
               </div>
 
-              {/* Pills */}
               <div className="flex flex-wrap gap-2">
                 {row.items.map((item, i) => (
                   <Pill key={item} label={item} index={rowIndex * 5 + i} />

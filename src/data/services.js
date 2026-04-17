@@ -1,4 +1,4 @@
-import { Globe, Smartphone, LayoutDashboard, Palette, Bot, Search } from 'lucide-react'
+import { Globe, Smartphone, LayoutDashboard, Palette, Bot, Search, PenTool } from 'lucide-react'
 import { FaShopify, FaWordpress } from 'react-icons/fa6'
 
 export const services = [
@@ -36,6 +36,14 @@ export const services = [
   },
   {
     id: 5,
+    icon: PenTool,
+    title: 'Graphic Design',
+    desc: 'Brand visuals, social media creatives, marketing graphics, pitch assets, and polished digital collateral for every launch.',
+    tag: null,
+    featured: false,
+  },
+  {
+    id: 6,
     icon: Bot,
     title: 'AI Chatbots & Agents',
     desc: 'Custom AI assistants, chatbots, and automation agents powered by GPT-4 and Claude APIs — integrated into your product.',
@@ -43,7 +51,7 @@ export const services = [
     featured: false,
   },
   {
-    id: 6,
+    id: 7,
     icon: Search,
     title: 'SEO & Content Strategy',
     desc: 'AI-powered content creation, technical SEO audits, and growth strategies that drive organic traffic at scale.',
@@ -51,7 +59,7 @@ export const services = [
     featured: false,
   },
   {
-    id: 7,
+    id: 8,
     icon: FaWordpress,
     title: 'WordPress Websites',
     desc: 'Fast WordPress sites with custom themes, performance tuning, SEO foundations, and easy content editing for your team.',
@@ -59,7 +67,7 @@ export const services = [
     featured: false,
   },
   {
-    id: 8,
+    id: 9,
     icon: FaShopify,
     title: 'Shopify Websites',
     desc: 'Conversion-ready Shopify storefronts with custom sections, app setup, product flows, and checkout-ready polish.',

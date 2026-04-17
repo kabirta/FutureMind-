@@ -7,57 +7,39 @@ const CTA = () => {
   const scrollToContact = () => {
     document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
   }
+
   const scrollToPricing = () => {
     document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' })
   }
 
   return (
-    <section className="theme-section-soft relative py-32 lg:py-40 overflow-hidden">
-      {/* Background gradient */}
-      <div
-        className="absolute inset-0"
-        style={{ background: 'linear-gradient(to bottom, rgb(var(--color-surface)), rgb(var(--color-bg)))' }}
-      />
-
-      {/* Large radial glow */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background: 'radial-gradient(ellipse 60% 60% at 50% 50%, rgb(var(--color-accent) / 0.08) 0%, transparent 70%)',
-        }}
-      />
-
-      {/* Grid */}
-      <div className="absolute inset-0 grid-bg opacity-40" />
-
-      <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <section className="section-shell bg-[#030712]">
+      <div className="absolute inset-0 network-bg opacity-60" aria-hidden="true" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_45%,rgb(34_211_238_/_0.17),transparent_28rem)]" aria-hidden="true" />
+      <div className="section-inner text-center">
         <ScrollReveal>
-          <span className="section-label mb-6 block">Ready to build?</span>
-        </ScrollReveal>
-
-        <ScrollReveal delay={0.1}>
-          <h2 className="font-display font-extrabold text-4xl sm:text-5xl lg:text-7xl text-text tracking-tighter leading-tight mb-6">
-            Ready to{' '}
-            <span className="text-accent">launch</span>
-            {' '}something great?
-          </h2>
-        </ScrollReveal>
-
-        <ScrollReveal delay={0.2}>
-          <p className="font-body text-base sm:text-lg text-muted max-w-lg mx-auto mb-10 leading-relaxed">
-            Stop waiting. Start building. Our team is ready to turn your idea into a production-ready product — in days, not months.
-          </p>
-        </ScrollReveal>
-
-        <ScrollReveal delay={0.3}>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button variant="primary" size="lg" onClick={scrollToContact}>
-              Start a project <ArrowRight size={16} />
-            </Button>
-            <Button variant="ghost" size="lg" onClick={scrollToPricing}>
-              See pricing
-            </Button>
-          </div>
+          <motion.div
+            className="glass-panel mx-auto max-w-5xl overflow-hidden rounded-lg px-5 py-12 sm:px-10 lg:px-16 lg:py-16"
+            whileHover={{ y: -4 }}
+            transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <div className="mx-auto mb-6 h-px max-w-xl soft-line" />
+            <span className="section-label mb-6">Ready to build?</span>
+            <h2 className="mx-auto mt-5 max-w-4xl font-display text-4xl font-extrabold leading-tight text-white sm:text-5xl lg:text-7xl">
+              Ready to <span className="text-gradient">launch</span> something great?
+            </h2>
+            <p className="mx-auto mt-6 max-w-2xl font-body text-base leading-8 text-slate-300 sm:text-lg">
+              Stop waiting. Start building. Our team is ready to turn your idea into a production-ready product — in days, not months.
+            </p>
+            <div className="mt-10 flex flex-col justify-center gap-4 sm:flex-row">
+              <Button variant="primary" size="lg" onClick={scrollToContact}>
+                Start a project <ArrowRight size={16} />
+              </Button>
+              <Button variant="secondary" size="lg" onClick={scrollToPricing}>
+                See pricing
+              </Button>
+            </div>
+          </motion.div>
         </ScrollReveal>
       </div>
     </section>

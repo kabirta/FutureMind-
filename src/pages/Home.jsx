@@ -9,7 +9,7 @@ import CTA from '../components/sections/CTA'
 import Contact from '../components/sections/Contact'
 
 const Home = () => (
-  <>
+  <main>
     <Hero />
     <Marquee />
     <Services />
@@ -19,7 +19,7 @@ const Home = () => (
     <TechStack />
     <CTA />
     <Contact />
-  </>
+  </main>
 )
 
 export default Home

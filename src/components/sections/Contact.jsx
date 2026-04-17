@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { motion, AnimatePresence } from 'framer-motion'
-import { Mail, Phone, MapPin, Clock, CheckCircle } from 'lucide-react'
+import { AnimatePresence, motion } from 'framer-motion'
+import { CheckCircle, Clock, Mail, MapPin, Phone } from 'lucide-react'
 import SectionLabel from '../ui/SectionLabel'
 import ScrollReveal from '../ui/ScrollReveal'
 import Button from '../ui/Button'
@@ -20,6 +20,7 @@ const serviceOptions = [
   'Mobile App (iOS & Android)',
   'Web App / SaaS MVP',
   'UI/UX Design',
+  'Graphic Design',
   'AI Chatbot / Agent',
   'SEO & Content Strategy',
   'Other / Not sure yet',
@@ -27,7 +28,7 @@ const serviceOptions = [
 
 const InputField = ({ label, error, children }) => (
   <div className="flex flex-col gap-1.5">
-    <label className="font-body text-xs text-muted tracking-wide uppercase">{label}</label>
+    <label className="font-body text-xs font-semibold uppercase text-slate-400">{label}</label>
     {children}
     <AnimatePresence>
       {error && (
@@ -44,7 +45,7 @@ const InputField = ({ label, error, children }) => (
   </div>
 )
 
-const inputClass = 'w-full bg-surface2 border border-surface2 rounded-xl px-4 py-3 font-body text-sm text-text placeholder-muted focus:outline-none focus:border-accent/50 focus:bg-surface transition-colors duration-200'
+const inputClass = 'w-full rounded-lg border border-cyan-300/12 bg-white/[0.04] px-4 py-3 font-body text-sm text-white placeholder:text-slate-500 transition-colors duration-200 focus:border-cyan-300/50 focus:bg-cyan-300/[0.06] focus:outline-none'
 
 const Contact = () => {
   const [submitted, setSubmitted] = useState(false)
@@ -55,54 +56,50 @@ const Contact = () => {
   } = useForm()
 
   const onSubmit = async (data) => {
-    // Simulate network request
     await new Promise((res) => setTimeout(res, 1200))
     console.log('Form submitted:', data)
     setSubmitted(true)
   }
 
   return (
-    <section id="contact" className="theme-section-soft py-24 lg:py-32 bg-surface">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
+    <section id="contact" className="section-shell bg-[#050b1a]">
+      <div className="absolute inset-0 cyber-grid opacity-35" aria-hidden="true" />
+      <div className="section-inner">
         <ScrollReveal>
-          <div className="flex flex-col gap-4 mb-14 text-center">
-            <div className="flex justify-center">
-              <SectionLabel>Get in touch</SectionLabel>
-            </div>
-            <h2 className="font-display font-extrabold text-4xl lg:text-5xl text-text tracking-tight">
+          <div className="mb-14 text-center">
+            <SectionLabel>Get in touch</SectionLabel>
+            <h2 className="mt-5 font-display text-4xl font-extrabold leading-tight text-white sm:text-5xl lg:text-6xl">
               Let's build together
             </h2>
-            <p className="font-body text-base text-muted max-w-md mx-auto leading-relaxed">
+            <p className="mx-auto mt-5 max-w-md font-body text-base leading-8 text-slate-400">
               Tell us about your project. We'll get back to you within 24 hours with a plan.
             </p>
           </div>
         </ScrollReveal>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
-          {/* Left — info */}
+        <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-20">
           <ScrollReveal>
             <div className="flex flex-col gap-8">
               <div>
-                <h3 className="font-display font-bold text-2xl text-text mb-3 tracking-tight">
+                <h3 className="font-display text-2xl font-bold text-white">
                   Ready when you are
                 </h3>
-                <p className="font-body text-sm text-muted leading-relaxed max-w-sm">
+                <p className="mt-3 max-w-sm font-body text-sm leading-7 text-slate-400">
                   Whether you have a fully scoped project or just an idea on a napkin — we'd love to hear from you. No commitment required.
                 </p>
               </div>
 
-              <div className="flex flex-col gap-5">
+              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
                 {contactDetails.map((detail) => {
                   const Icon = detail.icon
                   return (
-                    <div key={detail.label} className="flex items-center gap-4">
-                      <div className="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center flex-shrink-0">
-                        <Icon size={16} className="text-accent" />
+                    <div key={detail.label} className="glass-card flex items-center gap-4 rounded-lg p-4">
+                      <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-cyan-300/10 text-cyan-100">
+                        <Icon size={16} />
                       </div>
                       <div>
-                        <p className="font-body text-xs text-muted">{detail.label}</p>
-                        <p className="font-body text-sm text-text">{detail.value}</p>
+                        <p className="font-body text-xs text-slate-500">{detail.label}</p>
+                        <p className="font-body text-sm text-white">{detail.value}</p>
                       </div>
                     </div>
                   )
@@ -111,9 +108,8 @@ const Contact = () => {
             </div>
           </ScrollReveal>
 
-          {/* Right — form */}
           <ScrollReveal delay={0.15}>
-            <div className="theme-card bg-bg border border-surface2 rounded-lg p-7 lg:p-8">
+            <div className="glass-panel rounded-lg p-7 lg:p-8">
               <AnimatePresence mode="wait">
                 {submitted ? (
                   <motion.div
@@ -121,17 +117,17 @@ const Contact = () => {
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                    className="flex flex-col items-center justify-center text-center py-12 gap-4"
+                    className="flex flex-col items-center justify-center gap-4 py-12 text-center"
                   >
                     <motion.div
                       initial={{ scale: 0 }}
                       animate={{ scale: 1 }}
                       transition={{ delay: 0.1, type: 'spring', stiffness: 200 }}
                     >
-                      <CheckCircle size={56} className="text-accent" />
+                      <CheckCircle size={56} className="text-cyan-200" />
                     </motion.div>
-                    <h3 className="font-display font-bold text-2xl text-text">Message Sent!</h3>
-                    <p className="font-body text-sm text-muted max-w-xs">
+                    <h3 className="font-display text-2xl font-bold text-white">Message Sent!</h3>
+                    <p className="max-w-xs font-body text-sm text-slate-400">
                       Thanks for reaching out. We'll be in touch within 24 hours.
                     </p>
                   </motion.div>
@@ -143,8 +139,7 @@ const Contact = () => {
                     initial={{ opacity: 1 }}
                     exit={{ opacity: 0, scale: 0.98 }}
                   >
-                    {/* Name row */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                       <InputField label="First Name" error={errors.firstName?.message}>
                         <input
                           className={inputClass}
@@ -161,7 +156,6 @@ const Contact = () => {
                       </InputField>
                     </div>
 
-                    {/* Email */}
                     <InputField label="Email" error={errors.email?.message}>
                       <input
                         type="email"
@@ -177,10 +171,9 @@ const Contact = () => {
                       />
                     </InputField>
 
-                    {/* Service */}
                     <InputField label="Service" error={errors.service?.message}>
                       <select
-                        className={`${inputClass} appearance-none cursor-pointer`}
+                        className={`${inputClass} cursor-pointer appearance-none`}
                         {...register('service', { required: 'Please select a service' })}
                         defaultValue=""
                       >
@@ -195,7 +188,6 @@ const Contact = () => {
                       </select>
                     </InputField>
 
-                    {/* Description */}
                     <InputField label="Project Description" error={errors.description?.message}>
                       <textarea
                         className={`${inputClass} resize-none`}
@@ -208,25 +200,14 @@ const Contact = () => {
                       />
                     </InputField>
 
-                    {/* Submit */}
                     <Button
                       type="submit"
                       variant="primary"
                       size="lg"
-                      className="w-full mt-2"
+                      className="mt-2 w-full"
                       disabled={isSubmitting}
                     >
-                      {isSubmitting ? (
-                        <span className="flex items-center gap-2">
-                          <svg className="animate-spin h-4 w-4" viewBox="0 0 24 24" fill="none">
-                            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
-                          </svg>
-                          Sending...
-                        </span>
-                      ) : (
-                        'Send Message'
-                      )}
+                      {isSubmitting ? 'Sending...' : 'Send Message'}
                     </Button>
                   </motion.form>
                 )}

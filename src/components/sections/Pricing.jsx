@@ -12,56 +12,50 @@ const PricingCard = ({ plan, index }) => {
 
   return (
     <ScrollReveal delay={index * 0.1}>
-      <motion.div
-        className={`relative h-full rounded-lg border p-7 lg:p-8 flex flex-col ${
+      <motion.article
+        className={`relative flex h-full flex-col rounded-lg border p-7 backdrop-blur-xl lg:p-8 ${
           plan.featured
-            ? 'theme-card theme-card-featured border-accent bg-gradient-to-b from-accent/5 to-transparent'
-            : 'theme-card border-surface2 bg-surface'
+            ? 'border-cyan-300/45 bg-cyan-300/[0.075] shadow-[0_0_70px_rgb(34_211_238_/_0.16)]'
+            : 'border-white/10 bg-white/[0.035]'
         }`}
         whileHover={{ y: -8 }}
         transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
       >
-        {/* Most Popular badge */}
         {plan.featured && (
           <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-            <span className="bg-accent text-bg text-xs font-body font-semibold px-4 py-1.5 rounded-full whitespace-nowrap">
+            <span className="whitespace-nowrap rounded-lg border border-cyan-300/35 bg-cyan-300/15 px-4 py-1.5 font-body text-xs font-semibold text-cyan-100">
               Most Popular
             </span>
           </div>
         )}
 
-        {/* Plan name */}
-        <p className="section-label mb-3">{plan.name}</p>
+        <p className="section-label mb-4">{plan.name}</p>
+        {plan.price && (
+          <div className="mb-2">
+            <span className="font-display text-4xl font-extrabold text-white lg:text-5xl">
+              {plan.price}
+            </span>
+          </div>
+        )}
 
-        {/* Price */}
-        <div className="mb-2">
-          <span className="font-display font-extrabold text-4xl lg:text-5xl text-text tracking-tight">
-            {plan.price}
-          </span>
-        </div>
-
-        {/* Delivery badge */}
         <div className="mb-4">
-          <span className="theme-pill inline-flex items-center gap-1.5 text-xs font-body text-muted bg-surface2 border border-surface2 rounded-lg px-3 py-1">
-            <span className="w-1.5 h-1.5 rounded-full bg-green-400" />
+          <span className="inline-flex items-center gap-1.5 rounded-lg border border-cyan-300/12 bg-white/[0.04] px-3 py-1 font-body text-xs text-slate-400">
+            <span className="h-1.5 w-1.5 rounded-full bg-green-400" />
             Delivered in {plan.delivery}
           </span>
         </div>
 
-        {/* Description */}
-        <p className="font-body text-sm text-muted mb-7 leading-relaxed">{plan.description}</p>
+        <p className="mb-7 font-body text-sm leading-7 text-slate-400">{plan.description}</p>
 
-        {/* Features */}
-        <ul className="space-y-3 mb-8 flex-1">
+        <ul className="mb-8 flex flex-1 flex-col gap-3">
           {plan.features.map((feature) => (
             <li key={feature} className="flex items-start gap-3">
-              <Check size={15} className="text-accent flex-shrink-0 mt-0.5" />
-              <span className="font-body text-sm text-text/80">{feature}</span>
+              <Check size={15} className="mt-0.5 flex-shrink-0 text-cyan-200" />
+              <span className="font-body text-sm text-slate-300">{feature}</span>
             </li>
           ))}
         </ul>
 
-        {/* CTA */}
         <Button
           variant={plan.featured ? 'primary' : 'outline'}
           size="md"
@@ -70,39 +64,35 @@ const PricingCard = ({ plan, index }) => {
         >
           {plan.price === 'Custom' ? 'Get a quote' : 'Get started'}
         </Button>
-      </motion.div>
+      </motion.article>
     </ScrollReveal>
   )
 }
 
 const Pricing = () => (
-  <section id="pricing" className="theme-section py-24 lg:py-32">
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      {/* Header */}
+  <section id="pricing" className="section-shell bg-[#050b1a]">
+    <div className="absolute inset-0 bg-[radial-gradient(circle_at_52%_0%,rgb(34_211_238_/_0.13),transparent_26rem)]" aria-hidden="true" />
+    <div className="section-inner">
       <ScrollReveal>
-        <div className="flex flex-col gap-4 mb-16 text-center">
-          <div className="flex justify-center">
-            <SectionLabel>Pricing</SectionLabel>
-          </div>
-          <h2 className="font-display font-extrabold text-4xl lg:text-5xl text-text tracking-tight">
+        <div className="mx-auto mb-16 max-w-3xl text-center">
+          <SectionLabel>Pricing</SectionLabel>
+          <h2 className="mt-5 font-display text-4xl font-extrabold leading-tight text-white sm:text-5xl lg:text-6xl">
             Transparent pricing, no surprises
           </h2>
-          <p className="font-body text-base text-muted max-w-lg mx-auto leading-relaxed">
+          <p className="mx-auto mt-5 max-w-2xl font-body text-base leading-8 text-slate-400">
             Fixed-price packages that fit any stage. Need something custom? Let's talk.
           </p>
         </div>
       </ScrollReveal>
 
-      {/* Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch mt-8">
+      <div className="mt-8 grid grid-cols-1 items-stretch gap-6 md:grid-cols-3">
         {plans.map((plan, index) => (
           <PricingCard key={plan.id} plan={plan} index={index} />
         ))}
       </div>
 
-      {/* Money-back note */}
       <ScrollReveal delay={0.3}>
-        <p className="text-center font-body text-sm text-muted mt-10">
+        <p className="mt-10 text-center font-body text-sm text-slate-400">
           All projects include a satisfaction guarantee — if you're not happy after the first milestone, we'll refund you.
         </p>
       </ScrollReveal>

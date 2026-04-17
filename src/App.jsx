@@ -1,7 +1,8 @@
 import { Suspense, lazy } from 'react'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Navbar from './components/layout/Navbar'
 import Footer from './components/layout/Footer'
+import CursorGlow from './components/ui/CursorGlow'
 
 const Home = lazy(() => import('./pages/Home'))
 const About = lazy(() => import('./pages/About'))
@@ -10,14 +11,15 @@ const Blog = lazy(() => import('./pages/Blog'))
 const OurTeam = lazy(() => import('./pages/OurTeam'))
 
 const PageLoader = () => (
-  <div className="min-h-screen flex items-center justify-center">
-    <div className="w-8 h-8 rounded-full border-2 border-accent border-t-transparent animate-spin" />
+  <div className="flex min-h-screen items-center justify-center bg-bg">
+    <div className="h-9 w-9 rounded-full border-2 border-cyan-300 border-t-transparent shadow-[0_0_28px_rgb(34_211_238_/_0.45)] animate-spin" />
   </div>
 )
 
 function App() {
   return (
     <BrowserRouter>
+      <CursorGlow />
       <Navbar />
       <Suspense fallback={<PageLoader />}>
         <Routes>
