@@ -14,7 +14,7 @@ const Home = () => (
     <DigitalPartner />
     <Services />
     <Process />
-    <Pricing />
+    {/* <Pricing /> */}
     <WhyUs />
     <TechStack />
     <CTA />
