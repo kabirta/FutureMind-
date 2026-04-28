@@ -156,7 +156,7 @@ const Navbar = () => {
             <Phone size={15} className="text-cyan-200" />
             <span>+918013559045</span>
           </div>
-          <ThemeToggle theme={theme} onToggle={toggleTheme} />
+          {/* <ThemeToggle theme={theme} onToggle={toggleTheme} /> */}
           <Button size="sm" onClick={() => handleNavClick({ href: '#contact', sectionId: 'contact' })}>
             Start a Project <ArrowUpRight size={15} />
           </Button>

@@ -16,8 +16,8 @@ export default {
         text: 'rgb(var(--color-text) / <alpha-value>)',
       },
       fontFamily: {
-        display: ['Sora', 'sans-serif'],
-        body: ['Inter', 'sans-serif'],
+        display: ['Google Sans Flex', 'sans-serif'],
+        body: ['Google Sans Flex', 'sans-serif'],
       },
       animation: {
         marquee: 'marquee 30s linear infinite',
