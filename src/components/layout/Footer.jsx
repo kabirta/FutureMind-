@@ -31,13 +31,12 @@ const footerLinks = {
 }
 
 const FooterLogo = () => (
-  <Link to="/" className="inline-flex items-center gap-2" aria-label="CodeFair home">
-    <span className="grid h-8 w-8 place-items-center rounded-lg border border-cyan-300/30 bg-cyan-300/10">
-      <span className="h-3 w-3 rounded-sm border border-cyan-200" />
-    </span>
-    <span className="font-display text-xl font-extrabold text-white">
-      Code<span className="text-blue-gradient">Fair</span>
-    </span>
+  <Link to="/" className="inline-flex items-center" aria-label="CodeFair home">
+    <img
+      src="/logo.png"
+      alt="CodeFair"
+      className="h-10 w-auto object-contain sm:h-12"
+    />
   </Link>
 )
 
