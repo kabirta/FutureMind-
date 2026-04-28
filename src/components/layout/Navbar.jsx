@@ -16,10 +16,8 @@ const navLinks = [
 ]
 
 const LogoMark = () => (
-  <span className="relative grid h-8 w-8 place-items-center rounded-lg border border-cyan-300/30 bg-cyan-300/10 shadow-[0_0_24px_rgb(34_211_238_/_0.24)]">
-    <span className="absolute left-2 top-2 h-2 w-2 rounded-sm bg-cyan-200" />
-    <span className="absolute bottom-2 right-2 h-2 w-2 rounded-sm bg-blue-400" />
-    <span className="h-3 w-3 rounded-sm border border-violet-300/70" />
+  <span className="relative z-10 flex h-9 items-center">
+    <img src="/logo.png" alt="" className="h-8 w-auto object-contain sm:h-9" />
   </span>
 )
 
@@ -120,21 +118,26 @@ const Navbar = () => {
   return (
     <header className="fixed left-0 right-0 top-3 z-50 px-3 sm:top-5 sm:px-5">
       <nav
-        className={`mx-auto flex max-w-7xl items-center justify-between rounded-lg border px-3 py-2 backdrop-blur-2xl transition-all duration-300 sm:px-4 ${
+        className={`relative mx-auto flex max-w-7xl items-center justify-between overflow-hidden rounded-lg border px-3 py-2 backdrop-blur-2xl transition-all duration-300 sm:px-4 ${
           scrolled
             ? 'border-cyan-300/20 bg-[#030712]/78 shadow-[var(--shadow-nav)]'
             : 'border-white/10 bg-[#030712]/54 shadow-[0_0_35px_rgb(48_164_255_/_0.08)]'
         }`}
         aria-label="Primary navigation"
       >
-        <Link to="/" className="flex items-center gap-2" aria-label="CodeFair home">
+        <div
+          className="pointer-events-none absolute bottom-0 left-0 top-0 w-56 bg-[radial-gradient(circle_at_18%_50%,rgb(0_62_203_/_0.38),transparent_9rem),linear-gradient(90deg,rgb(0_62_203_/_0.18),transparent)]"
+          aria-hidden="true"
+        />
+
+        <Link to="/" className="relative z-10 flex items-center gap-2" aria-label="CodeFair home">
           <LogoMark />
-          <span className="font-display text-lg font-extrabold text-white">
-            Code<span className="text-blue-gradient">Fair</span>
+          <span className="font-display text-lg font-extrabold text-white sm:text-xl">
+            Code<span>Fair</span>
           </span>
         </Link>
 
-        <div className="hidden items-center gap-1 md:flex">
+        <div className="relative z-10 hidden items-center gap-1 md:flex">
           {navLinks.map((link) => (
             <button
               key={link.label}
@@ -151,7 +154,7 @@ const Navbar = () => {
           ))}
         </div>
 
-        <div className="hidden items-center gap-3 md:flex">
+        <div className="relative z-10 hidden items-center gap-3 md:flex">
           <div className="hidden items-center gap-2 font-body text-sm font-medium text-slate-300 lg:flex">
             <Phone size={15} className="text-cyan-200" />
             <span>+918013559045</span>
@@ -162,7 +165,7 @@ const Navbar = () => {
           </Button>
         </div>
 
-        <div className="flex items-center gap-2 md:hidden">
+        <div className="relative z-10 flex items-center gap-2 md:hidden">
           <ThemeToggle theme={theme} onToggle={toggleTheme} />
           <button
             type="button"

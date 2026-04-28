@@ -65,10 +65,10 @@ const HeroMarquee = () => {
         {repeatedItems.map((item, index) => (
           <span
             key={`${item}-${index}`}
-            className="flex items-center gap-2 whitespace-nowrap px-1 font-body text-sm font-medium text-white sm:text-base"
+            className="flex items-center gap-2 whitespace-nowrap px-1 font-body text-sm font-medium text-white sm:text-lg"
           >
             {item}
-            <span className="text-blue-200">*</span>
+            <span className="text-blue-200">🌟</span>
           </span>
         ))}
       </div>
@@ -194,7 +194,7 @@ const Hero = () => {
                 }}
               >
                 <motion.div
-                  className="absolute left-1/2 top-0 flex h-11 w-11 -translate-x-1/2 -translate-y-full items-center justify-center rounded-lg border border-blue-300/25 bg-[#000713]/80 p-2 shadow-[0_0_24px_rgb(0_62_203_/_0.34)] backdrop-blur-md sm:h-12 sm:w-12"
+                  className="absolute left-1/2 top-0 flex h-11 w-11 -translate-x-1/2 -translate-y-full items-center justify-center rounded-lg border border-blue-300/25 bg-[#4b9bbf]/80 p-2 shadow-[0_0_24px_rgb(0_62_203_/_0.34)] backdrop-blur-md sm:h-12 sm:w-12"
                   animate={{ rotate: -360 }}
                   transition={{
                     duration: item.duration,
