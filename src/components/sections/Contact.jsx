@@ -26,6 +26,9 @@ const serviceOptions = [
   'Other / Not sure yet',
 ]
 
+const adminEmail = 'infocodefair@gmail.com'
+const contactEndpoint = `https://formsubmit.co/ajax/${adminEmail}`
+
 const InputField = ({ label, error, children }) => (
   <div className="flex flex-col gap-1.5">
     <label className="font-body text-xs font-semibold uppercase text-slate-400">{label}</label>
@@ -49,17 +52,52 @@ const inputClass = 'w-full rounded-lg border border-cyan-300/12 bg-white/[0.04] 
 
 const Contact = () => {
   const [submitted, setSubmitted] = useState(false)
+  const [submitError, setSubmitError] = useState('')
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors, isSubmitting },
   } = useForm()
 
   const onSubmit = async (data) => {
-    await new Promise((res) => setTimeout(res, 1200))
-    console.log('Form submitted:', data)
+    setSubmitError('')
+
+    const formData = new FormData()
+    formData.append('_subject', `New CodeFair query from ${data.firstName} ${data.lastName}`)
+    formData.append('_replyto', data.email)
+    formData.append('_template', 'table')
+    formData.append('_captcha', 'false')
+    formData.append('First name', data.firstName)
+    formData.append('Last name', data.lastName)
+    formData.append('Email', data.email)
+    formData.append('Service', data.service)
+    formData.append('Project description', data.description)
+
+    const response = await fetch(contactEndpoint, {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+      },
+      body: formData,
+    })
+
+    if (!response.ok) {
+      throw new Error('Unable to send message')
+    }
+
+    reset()
     setSubmitted(true)
   }
+
+  const handleFormSubmit = handleSubmit(async (data) => {
+    try {
+      await onSubmit(data)
+    } catch (error) {
+      console.error(error)
+      setSubmitError('Sorry, your message could not be sent. Please email us directly.')
+    }
+  })
 
   return (
     <section id="contact" className="section-shell bg-[#050b1a]">
@@ -134,7 +172,7 @@ const Contact = () => {
                 ) : (
                   <motion.form
                     key="form"
-                    onSubmit={handleSubmit(onSubmit)}
+                    onSubmit={handleFormSubmit}
                     className="flex flex-col gap-5"
                     initial={{ opacity: 1 }}
                     exit={{ opacity: 0, scale: 0.98 }}
@@ -199,6 +237,23 @@ const Contact = () => {
                         })}
                       />
                     </InputField>
+
+                    <AnimatePresence>
+                      {submitError && (
+                        <motion.p
+                          className="rounded-lg border border-red-400/20 bg-red-400/10 px-4 py-3 font-body text-sm text-red-200"
+                          initial={{ opacity: 0, y: -4 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: -4 }}
+                          role="alert"
+                        >
+                          {submitError}{' '}
+                          <a className="font-semibold underline" href={`mailto:${adminEmail}`}>
+                            {adminEmail}
+                          </a>
+                        </motion.p>
+                      )}
+                    </AnimatePresence>
 
                     <Button
                       type="submit"
