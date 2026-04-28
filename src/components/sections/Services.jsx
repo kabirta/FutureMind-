@@ -15,7 +15,7 @@ const ServiceFace = ({ service, scheme = 'plain' }) => {
       avatarText={service.avatarText}
       avatarUrl=""
       scheme={scheme}
-      displayAvatar
+      displayAvatar={false}
       cardCss={isAccent ? { backgroundColor: 'var(--accent-color)' } : undefined}
       className={isAccent ? 'h-full bg-transparent' : 'h-full bg-[#020817]'}
       titleCss={{ lineHeight: 1.08 }}

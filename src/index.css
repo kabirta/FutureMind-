@@ -485,6 +485,30 @@
     inset 0 0 48px rgb(255 255 255 / 0.26);
 }
 
+.tech-stack-sparkles {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.tech-stack-sparkle {
+  position: absolute;
+  display: block;
+  border-radius: 9999px;
+  transform: rotate(45deg);
+  will-change: left, top, opacity;
+}
+
+.tech-stack-sparkle:nth-child(3n) {
+  border-radius: 2px;
+}
+
+.tech-stack-sparkle:nth-child(4n) {
+  clip-path: polygon(50% 0%, 62% 38%, 100% 50%, 62% 62%, 50% 100%, 38% 62%, 0% 50%, 38% 38%);
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
