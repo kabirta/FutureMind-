@@ -1,25 +1,7 @@
-import { ArrowRight, Gauge, Rocket, Zap } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 import { motion } from 'framer-motion'
 import Button from '../ui/Button'
 import ScrollReveal from '../ui/ScrollReveal'
-
-const speedPoints = [
-  {
-    icon: Zap,
-    label: 'Rapid launches',
-    text: 'We compress planning, design, development, and release into a sharper workflow.',
-  },
-  {
-    icon: Gauge,
-    label: 'Momentum built in',
-    text: 'Every sprint is shaped around visible progress, cleaner decisions, and fewer delays.',
-  },
-  {
-    icon: Rocket,
-    label: 'Growth ready',
-    text: 'Your product, campaigns, and digital presence move together instead of waiting on each other.',
-  },
-]
 
 const DigitalPartner = () => {
   const scrollToServices = () => {
@@ -63,7 +45,7 @@ const DigitalPartner = () => {
           <div className="relative">
             <div className="absolute -inset-4 rounded-lg bg-blue-500/10 blur-3xl" aria-hidden="true" />
             <motion.div
-              className="relative overflow-hidden rounded-lg border border-blue-300/20 bg-[#030712]/70 shadow-[0_28px_100px_rgb(0_0_0_/_0.38)]"
+              className="relative mx-auto flex aspect-square w-full max-w-[620px] items-center justify-center overflow-hidden rounded-full border border-blue-300/20 bg-[#030712]/70 shadow-[0_28px_100px_rgb(0_0_0_/_0.38)]"
               whileHover={{ y: -5 }}
               transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
             >
@@ -77,25 +59,11 @@ const DigitalPartner = () => {
               <motion.img
                 src="/image/bhm-banner-ing.webp"
                 alt="Digital development team banner"
-                className="relative z-0 aspect-[16/10] w-full object-cover"
-                animate={{ x: [0, -8, 0], scale: [1.02, 1.055, 1.02] }}
+                className="relative z-0 h-[76%] w-[76%] object-contain"
+                animate={{ scale: [1, 1.025, 1] }}
                 transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
               />
             </motion.div>
-
-            <div className="mt-5 grid gap-3 sm:grid-cols-3">
-              {speedPoints.map((point) => {
-                const Icon = point.icon
-
-                return (
-                  <div key={point.label} className="rounded-lg border border-blue-300/14 bg-white/[0.04] p-4 backdrop-blur-xl">
-                    <Icon size={20} className="text-blue-200" />
-                    <h3 className="mt-3 font-body text-sm font-bold text-white">{point.label}</h3>
-                    <p className="mt-2 font-poppins text-xs leading-5 text-slate-400">{point.text}</p>
-                  </div>
-                )
-              })}
-            </div>
           </div>
         </ScrollReveal>
       </div>
