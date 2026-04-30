@@ -259,7 +259,7 @@ const Contact = () => {
                       type="submit"
                       variant="primary"
                       size="lg"
-                      className="mt-2 w-full"
+                      className="w-full"
                       disabled={isSubmitting}
                     >
                       {isSubmitting ? 'Sending...' : 'Send Message'}

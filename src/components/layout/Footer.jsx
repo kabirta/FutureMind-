@@ -31,12 +31,15 @@ const footerLinks = {
 }
 
 const FooterLogo = () => (
-  <Link to="/" className="inline-flex items-center" aria-label="CodeFair home">
+  <Link to="/" className="inline-flex items-center gap-2" aria-label="CodeFair home">
     <img
       src="/logo.png"
       alt="CodeFair"
       className="h-10 w-auto object-contain sm:h-12"
     />
+    <span className="font-display text-2xl font-extrabold text-white sm:text-3xl">
+            Code<span>Fair</span>
+          </span>
   </Link>
 )
 
@@ -64,7 +67,7 @@ const Footer = () => {
       <div className="section-inner py-14 sm:py-16">
         <div className="grid gap-10 lg:grid-cols-[1.25fr_2fr]">
           <div>
-            <FooterLogo />
+            <FooterLogo /> 
             <p className="mt-5 max-w-sm font-body text-sm leading-7 text-slate-400">
               AI-powered web & mobile development studio. We build digital products 5× faster, 60% cheaper — without sacrificing quality.
             </p>
