@@ -126,7 +126,6 @@ const Hero = () => {
           <motion.div
             variants={fadeUp}
             transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-            className="mb-6 inline-flex items-center gap-2 rounded-lg border border-blue-300/25 bg-blue-400/10 px-4 py-2 font-body text-xs font-semibold text-blue-100 shadow-[0_0_28px_rgb(0_62_203_/_0.18)]"
           >
             {/* <Zap size={13} className="fill-blue-100" />
             Next Gen Digital Agency */}
