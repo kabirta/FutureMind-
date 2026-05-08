@@ -155,10 +155,10 @@ const Navbar = () => {
         </div>
 
         <div className="relative z-10 hidden items-center gap-3 md:flex">
-          <div className="hidden items-center gap-2 font-body text-sm font-medium text-slate-300 lg:flex">
+          {/* <div className="hidden items-center gap-2 font-body text-sm font-medium text-slate-300 lg:flex">
             <Phone size={15} className="text-cyan-200" />
             <span>+918013559045</span>
-          </div>
+          </div> */}
           {/* <ThemeToggle theme={theme} onToggle={toggleTheme} /> */}
           <Button size="sm" onClick={() => handleNavClick({ href: '#contact', sectionId: 'contact' })}>
             Start a Project <ArrowUpRight size={15} />

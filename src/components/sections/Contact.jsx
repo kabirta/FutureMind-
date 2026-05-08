@@ -8,7 +8,7 @@ import Button from '../ui/Button'
 
 const contactDetails = [
   { icon: Mail, label: 'Email us', value: 'infocodefair@gmail.com' },
-  { icon: Phone, label: 'Call us', value: '+918013559045' },
+  // { icon: Phone, label: 'Call us', value: '+918013559045' },
   { icon: MapPin, label: 'Location', value: 'Remote-first · Worldwide' },
   { icon: Clock, label: 'Response time', value: 'Within 24 hours' },
 ]
