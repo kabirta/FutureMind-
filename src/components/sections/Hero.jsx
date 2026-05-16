@@ -1,6 +1,16 @@
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion'
 import { ArrowRight, Zap } from 'lucide-react'
 import Button from '../ui/Button'
+import figmaIcon from '../../assets/icons/figma.png'
+import flutterIcon from '../../assets/icons/icons8-flutter-100.png'
+import kotlinIcon from '../../assets/icons/icons8-kotlin-50.png'
+import nextIcon from '../../assets/icons/Next.js.png'
+import nodeIcon from '../../assets/icons/nodejs.png'
+import openAiIcon from '../../assets/icons/openai-icon.png'
+import photoshopIcon from '../../assets/icons/photoshop.png'
+import reactIcon from '../../assets/icons/physics (1).png'
+import typescriptIcon from '../../assets/icons/typescript.png'
+import vercelIcon from '../../assets/icons/vercel.png'
 
 const marqueeItems = [
   'React',
@@ -20,31 +30,73 @@ const marqueeItems = [
 const orbitIcons = [
   {
     name: 'React',
-    src: '/icon/react.png',
-    orbitClass: 'h-[320px] w-[320px] sm:h-[440px] sm:w-[440px] lg:h-[540px] lg:w-[540px]',
+    src: reactIcon,
+    orbitClass: 'h-[260px] w-[260px] sm:h-[350px] sm:w-[350px] lg:h-[430px] lg:w-[430px]',
     duration: 10,
-    delay: 0,
+    angle: 12,
   },
   {
     name: 'Next.js',
-    src: '/icon/nextjs.png',
-    orbitClass: 'h-[320px] w-[320px] sm:h-[440px] sm:w-[440px] lg:h-[540px] lg:w-[540px]',
+    src: nextIcon,
+    orbitClass: 'h-[300px] w-[300px] sm:h-[400px] sm:w-[400px] lg:h-[500px] lg:w-[500px]',
     duration: 15,
-    delay: 0,
+    angle: 52,
   },
   {
-    name: 'Tailwind CSS',
-    src: '/icon/tailwind.png',
+    name: 'OpenAI',
+    src: openAiIcon,
     orbitClass: 'h-[320px] w-[320px] sm:h-[440px] sm:w-[440px] lg:h-[540px] lg:w-[540px]',
-    duration: 11,
-    delay: 0,
+    duration: 18,
+    angle: 92,
   },
   {
     name: 'TypeScript',
-    src: '/icon/typescript.png',
+    src: typescriptIcon,
+    orbitClass: 'h-[280px] w-[280px] sm:h-[370px] sm:w-[370px] lg:h-[460px] lg:w-[460px]',
+    duration: 13,
+    angle: 134,
+  },
+  {
+    name: 'Flutter',
+    src: flutterIcon,
     orbitClass: 'h-[320px] w-[320px] sm:h-[440px] sm:w-[440px] lg:h-[540px] lg:w-[540px]',
-    duration: 18,
-    delay: 0,
+    duration: 20,
+    angle: 176,
+  },
+  {
+    name: 'Kotlin',
+    src: kotlinIcon,
+    orbitClass: 'h-[260px] w-[260px] sm:h-[350px] sm:w-[350px] lg:h-[430px] lg:w-[430px]',
+    duration: 16,
+    angle: 218,
+  },
+  {
+    name: 'Figma',
+    src: figmaIcon,
+    orbitClass: 'h-[300px] w-[300px] sm:h-[400px] sm:w-[400px] lg:h-[500px] lg:w-[500px]',
+    duration: 22,
+    angle: 258,
+  },
+  {
+    name: 'Node.js',
+    src: nodeIcon,
+    orbitClass: 'h-[280px] w-[280px] sm:h-[370px] sm:w-[370px] lg:h-[460px] lg:w-[460px]',
+    duration: 17,
+    angle: 296,
+  },
+  {
+    name: 'Photoshop',
+    src: photoshopIcon,
+    orbitClass: 'h-[320px] w-[320px] sm:h-[440px] sm:w-[440px] lg:h-[540px] lg:w-[540px]',
+    duration: 24,
+    angle: 332,
+  },
+  {
+    name: 'Vercel',
+    src: vercelIcon,
+    orbitClass: 'h-[300px] w-[300px] sm:h-[400px] sm:w-[400px] lg:h-[500px] lg:w-[500px]',
+    duration: 19,
+    angle: 370,
   },
 ]
 
@@ -184,20 +236,18 @@ const Hero = () => {
             >
               <motion.div
                 className="relative h-full w-full"
-                animate={{ rotate: 360 }}
+                animate={{ rotate: [item.angle, item.angle + 360] }}
                 transition={{
                   duration: item.duration,
-                  delay: item.delay,
                   repeat: Infinity,
                   ease: 'linear',
                 }}
               >
                 <motion.div
-                  className="absolute left-1/2 top-0 flex h-11 w-11 -translate-x-1/2 -translate-y-full items-center justify-center rounded-lg border border-blue-300/25 bg-[#4b9bbf]/80 p-2 shadow-[0_0_24px_rgb(0_62_203_/_0.34)] backdrop-blur-md sm:h-12 sm:w-12"
-                  animate={{ rotate: -360 }}
+                  className="absolute left-1/2 top-0 flex h-10 w-10 -translate-x-1/2 -translate-y-full items-center justify-center rounded-lg border border-blue-200/50 bg-[#6ec6ef]/50 p-2 shadow-[0_0_28px_rgb(56_189_248_/_0.38)] backdrop-blur-md sm:h-12 sm:w-12"
+                  animate={{ rotate: [-item.angle, -item.angle - 360] }}
                   transition={{
                     duration: item.duration,
-                    delay: item.delay,
                     repeat: Infinity,
                     ease: 'linear',
                   }}

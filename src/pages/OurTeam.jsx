@@ -1,35 +1,38 @@
 import { Link } from 'react-router-dom'
 import { ArrowUpRight } from 'lucide-react'
+import bratinImage from '../assets/BRATIN.jpeg'
+import kabirImage from '../assets/Kabir.jpeg'
+import kausikImage from '../assets/KAUSIK.jpeg'
 
 const teamMembers = [
   {
-    name: 'Aarav Mehta',
-    role: 'Lead designer',
-    image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=900&q=80',
-    bio: 'Aarav shapes the first pass of every product: story, structure, and the visual system that keeps each screen feeling calm, useful, and sharp.',
+    name: 'Kausik Saha',
+    role: 'MERN Stack ERP Developer',
+    image: kausikImage,
+    bio: 'Kausik a professional MERN Stack ERP Developer skilled in building scalable and user-friendly business applications using MongoDB, Express.js, React.js, and Node.js. I specialize in developing efficient ERP solutions with clean UI, secure APIs, and optimized backend systems',
     socials: ['x', 'ig', 'in'],
   },
   {
-    name: 'Riya Kapoor',
-    role: 'Full stack developer',
-    image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=900&q=80',
-    bio: 'Riya turns prototypes into fast, maintainable applications, with a focus on clean frontends, reliable APIs, and launch-ready details.',
+    name: 'Bratin Kundu',
+    role: 'Graphics & UI UX designer',
+    image: bratinImage,
+    bio: 'Bratin generally focus on building clean, user-friendly, and visually engaging digital experiences. Skilled in branding, web design, mobile app interfaces, and modern user-centered design solutions.',
     socials: ['gh', 'in'],
   },
   {
-    name: 'Neel Banerjee',
+    name: 'Kabir Mandal',
     role: 'AI product engineer',
-    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=900&q=80',
-    bio: 'Neel builds the AI workflows behind CodeFair projects, from agents and retrieval flows to practical automations teams can use every day.',
+    image: kabirImage,
+    bio: 'Kabir builds the AI workflows behind CodeFair projects, from agents and retrieval flows to practical automations teams can use every day.',
     socials: ['ai', 'x', 'in'],
   },
-  {
-    name: 'Sana Roy',
-    role: 'Project strategist',
-    image: 'https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=900&q=80',
-    bio: 'Sana keeps scope, timeline, and client goals aligned, making sure every sprint produces something visible and useful.',
-    socials: ['mail', 'in'],
-  },
+  // {
+  //   name: 'Sana Roy',
+  //   role: 'Project strategist',
+  //   image: 'https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=900&q=80',
+  //   bio: 'Sana keeps scope, timeline, and client goals aligned, making sure every sprint produces something visible and useful.',
+  //   socials: ['mail', 'in'],
+  // },
 ]
 
 const socialPositions = [
@@ -91,6 +94,22 @@ const TeamMember = ({ member, index }) => {
   )
 }
 
+const TeamCollaboration = () => (
+  <section className="relative border-t border-cyan-300/10 px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+    <div className="mx-auto max-w-6xl">
+      <div className="rounded-lg border border-cyan-300/12 bg-cyan-300/[0.04] p-7 text-center shadow-[0_0_42px_rgb(34_211_238_/_0.08)] backdrop-blur-xl sm:p-10">
+        <p className="font-body text-xs font-semibold uppercase text-cyan-200">Beyond our featured members</p>
+        <h2 className="mx-auto mt-4 max-w-3xl font-display text-3xl font-extrabold leading-tight text-white sm:text-5xl">
+          Apart from them, we have many more professionals within our team.
+        </h2>
+        <p className="mx-auto mt-5 max-w-3xl font-body text-sm leading-7 text-slate-400 sm:text-base">
+          Our wider CodeFair team includes developers, designers, AI specialists, creative editors, marketing minds, and project support professionals who work together to deliver complete digital solutions.
+        </p>
+      </div>
+    </div>
+  </section>
+)
+
 const OurTeam = () => (
   <main className="relative min-h-screen overflow-hidden bg-[#030712] pt-24">
     <div className="absolute inset-0 cyber-grid opacity-35" aria-hidden="true" />
@@ -109,6 +128,8 @@ const OurTeam = () => (
     {teamMembers.map((member, index) => (
       <TeamMember key={member.name} member={member} index={index} />
     ))}
+
+    <TeamCollaboration />
   </main>
 )
 
